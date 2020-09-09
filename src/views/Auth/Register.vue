@@ -88,7 +88,7 @@ a {
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required v-model="passwordF">
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required v-model="passwordF2">
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
 
@@ -106,12 +106,15 @@ a {
 </template>
 
 <script>
+import '@/firebase/init.js'
+import firebase from 'firebase';
 export default {
     data() {
         return{
             nombre: '',
             emailF: '',
             passwordF: '',
+            passwordF2: '',
             error: ''
         }
     },
@@ -119,7 +122,17 @@ export default {
     name: 'Register',
     methods: {
         register(){
-            
+            this.error = ''
+            firebase.auth().createUserWithEmailAndPassword(this.emailF, this.passwordF)
+            .then(user => {
+                this.nombre = ''
+                this.emailF = ''
+                this.passwordF = ''
+                this.passwordF2 = ''
+                console.log(user) 
+            }).catch(err =>{
+                this.error = err.message  
+            })
         }
     }
 }
