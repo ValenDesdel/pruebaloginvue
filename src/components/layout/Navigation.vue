@@ -33,15 +33,15 @@ body {
 
 <div class="topnav">
 
-<router-link class="navbar-item" to="/">
+<router-link to="/">
   <a class="active">Home</a>
 </router-link>
 
-<router-link class="navbar-item" to="/login">
+<router-link to="/login">
   <a class="rightlogin">Login</a>
 </router-link>
 
-<router-link class="navbar-item" to="/register">
+<router-link  to="/register">
   <a class="rightlogin">Register</a>
 </router-link>
 
