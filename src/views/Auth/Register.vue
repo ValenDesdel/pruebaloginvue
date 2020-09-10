@@ -125,11 +125,24 @@ export default {
             this.error = ''
             firebase.auth().createUserWithEmailAndPassword(this.emailF, this.passwordF)
             .then(user => {
-                this.nombre = ''
-                this.emailF = ''
-                this.passwordF = ''
-                this.passwordF2 = ''
-                console.log(user) 
+              this.$router.push({ name: 'dashboard'})
+                //ACTUALIZANDO EL USUARIO
+                if(user){
+                  user.updateProfile({ 
+                    displayName: this.nombre
+                  }).then((u)=>{
+                    this.nombre = ''
+                    this.emailF = ''
+                    this.passwordF = ''
+                    this.passwordF2 = ''
+                    
+                    console.log(user) 
+                    console.log(u) 
+                  }).catch((err)=>{
+                    this.error = err.message
+                  })
+                }
+                
             }).catch(err =>{
                 this.error = err.message  
             })
