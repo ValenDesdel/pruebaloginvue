@@ -1,7 +1,8 @@
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: rgb(36, 36, 36);
 }
 
 * {
@@ -12,36 +13,31 @@ b{
   color: white;  
 }
 
-/* Add padding to containers */
 .container {
   padding: 16px;
-  background-color: rgb(44, 44, 44);
+  background-color: rgba(0, 0, 0, 0);
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
-/* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #303030;
+  background: rgb(36, 36, 36);
+  color: white;
 }
 
 input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
+  color: white;
   outline: none;
 }
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
 
-/* Set a style for the submit button */
 .registerbtn {
-  background-color: #4CAF50;
+  background: rgb(20, 20, 20);
   color: white;
   padding: 16px 20px;
   margin: 8px 0;
@@ -49,21 +45,22 @@ hr {
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
+  font-size: 20px;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 15px;
+  transition-duration: 1s;
 }
 
 .registerbtn:hover {
-  opacity: 1;
+  opacity: 4;
+  border-radius: 50px;
+  transition-duration: 1s;
 }
 
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
+hr {
+  border: 1px solid rgb(59, 59, 59);;
+  margin-bottom: 20px;
+  margin-top: -20px;
 }
 </style>
 
@@ -73,16 +70,15 @@ a {
 
     <form action="@" @submit.prevent="login">
   <div class="container">
- 
-    
+
+    <label for="email"><b>Correo electrónico</b></label>
+    <input type="text" placeholder="Ingrese su correo electrónico"  required v-model="emailF">
     <hr>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required v-model="emailF">
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required v-model="passwordF">
-
+    <label for="psw"><b>Contraseña</b></label>
+    <input type="password" placeholder="Ingrese su contraseña"  required v-model="passwordF">
+    <hr>
+    
     <button type="submit" class="registerbtn">Iniciar sesión</button>
   </div>
   
